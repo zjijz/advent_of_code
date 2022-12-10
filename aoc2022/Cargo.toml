@@ -11,9 +11,21 @@ name = "day1"
 [[bin]]
 name = "day2"
 
+[[bin]]
+name = "day3"
+
+[[bin]]
+name = 'day4'
+
+[[bin]]
+name = "day5"
+
 [dependencies]
-anyhow = "1.0.66"
-futures = "0.3.25"
-rayon = "1.6.0"
-structopt = "0.3.26"
-tokio = { version = "1.22.0", features = [ "full" ] }
+anyhow = "1"
+futures = "0.3"
+futures-concurrency = "7"
+itertools = "0.10"
+rayon = "1"
+regex = "1"
+structopt = "0.3"
+tokio = { version = "1", features = [ "full" ] }
