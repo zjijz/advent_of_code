@@ -2,7 +2,7 @@
 #![feature(decl_macro)]
 // For day3.
 #![feature(iter_array_chunks)]
-// For day5.
+// For day5 and day8.
 #![feature(result_flattening)]
 // For day5.
 #![feature(string_leak)]
@@ -13,3 +13,4 @@ pub mod day3;
 pub mod day4;
 pub mod day5;
 pub mod day6;
+pub mod day8;
