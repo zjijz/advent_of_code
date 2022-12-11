@@ -1,5 +1,6 @@
 use anyhow::Context;
 use itertools::Itertools as _;
+use once_cell::sync::Lazy;
 use regex::Regex;
 use std::{collections::VecDeque, path::Path, str::FromStr};
 
@@ -9,6 +10,8 @@ struct Move {
     from: usize,
     to: usize,
 }
+
+static REGEX: Lazy<Regex> = Lazy::new(|| Regex::new(r"move (\d+) from (\d+) to (\d+)").unwrap());
 
 macro regex_capture_group_to_usize($captures:expr, $group:expr) {
     $captures
@@ -24,11 +27,7 @@ impl FromStr for Move {
     type Err = anyhow::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        // TODO: Lazy static for regex.
-        let regex = Regex::new(r"move (\d+) from (\d+) to (\d+)")
-            .with_context(|| "Could not compile the regex!")?;
-
-        let captures = regex
+        let captures = REGEX
             .captures(s)
             .ok_or_else(|| anyhow::anyhow!("No match was found in {}!", s))?;
         let quantity = regex_capture_group_to_usize!(captures, 1)?;
