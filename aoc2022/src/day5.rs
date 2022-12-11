@@ -51,9 +51,8 @@ impl FromStr for Stacks {
         for line in s.lines().rev().skip(1) {
             for (i, item) in line.bytes().into_iter().chunks(4).into_iter().enumerate() {
                 let vec = item.into_iter().collect::<Vec<_>>();
-                let s = std::str::from_utf8(&vec).with_context(|| {
-                    "Chunk was parsed incorrectly in a way unable to recreate a str."
-                })?;
+                let s = std::str::from_utf8(&vec)
+                    .context("Chunk was parsed incorrectly in a way unable to recreate a str.")?;
                 if s.trim() == "" {
                     continue;
                 }
