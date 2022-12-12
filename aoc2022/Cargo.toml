@@ -35,6 +35,9 @@ name = "day10"
 [[bin]]
 name = "day11"
 
+[[bin]]
+name = "day12"
+
 [dependencies]
 anyhow = "1"
 futures = "0.3.13"
